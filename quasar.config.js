@@ -50,6 +50,7 @@ module.exports = configure(function (/* ctx */) {
     // Full list of options: https://v2.quasar.dev/quasar-cli-vite/quasar-config-js#build
     build: {
       alias: {
+        '@Assets': path.join(__dirname, './src/assets/*'),
         '@BaseUi': path.join(__dirname, './src/components/base'),
         '@Types': path.join(__dirname, './src/types'),
       },
