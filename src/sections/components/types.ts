@@ -1,7 +1,4 @@
-enum PLANS {
-  MONTHLY = 'monthly',
-  YEARLY = 'yearly',
-}
+import { PLANS } from '@Types';
 
 interface Plan {
   id: number;

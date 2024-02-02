@@ -52,6 +52,7 @@ module.exports = configure(function (/* ctx */) {
       alias: {
         '@Assets': path.join(__dirname, './src/assets/*'),
         '@BaseUi': path.join(__dirname, './src/components/base'),
+        '@Stores': path.join(__dirname, './src/stores/*'),
         '@Types': path.join(__dirname, './src/types'),
       },
       target: {

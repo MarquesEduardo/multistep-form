@@ -18,7 +18,7 @@ function nextStep(id: number) {
     />
 
     <div
-      class="z-20 mt-10 flex h-[450px] w-[740px] flex-nowrap items-center justify-between rounded-lg bg-white p-3 shadow-lg shadow-slate-200 sm:mt-0"
+      class="z-20 mt-24 flex h-max w-[740px] flex-nowrap items-center justify-between rounded-lg bg-white p-3 shadow-lg shadow-slate-200 sm:mt-0 lg:h-[450px]"
       id="form-card"
     >
       <StepsSidebar :step="step" />

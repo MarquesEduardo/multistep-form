@@ -1,24 +1,17 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { storeToRefs } from 'pinia';
 import { BaseButton } from '@BaseUi';
+import { useOnboardingStore } from '../stores/onboarding';
 
 const emit = defineEmits<{
   onNextStep: [];
 }>();
 
-const name = ref(null);
-const email = ref(null);
-const phone = ref(null);
-
-function onSubmit() {
-  // TODO :: persist on Store
-
-  emit('onNextStep');
-}
+const { name, email, phone } = storeToRefs(useOnboardingStore());
 </script>
 
 <template>
-  <section class="h-full px-14 py-8 sm:w-[70%]">
+  <section class="h-full px-4 py-6 sm:w-[70%] lg:px-14 lg:py-8">
     <div class="mb-6 flex flex-col items-start justify-start gap-1">
       <h2 class="text-2xl font-bold text-blue-dark">Pesonal info</h2>
 
@@ -28,7 +21,7 @@ function onSubmit() {
     <div class="text-blue-dark">
       <q-form
         class="q-gutter-md flex flex-col gap-2"
-        @submit="onSubmit"
+        @submit="emit('onNextStep')"
       >
         <fieldset class="my-0">
           <label class="text-xs"> Name </label>
@@ -67,7 +60,9 @@ function onSubmit() {
           />
         </fieldset>
 
-        <div class="flex justify-end">
+        <div
+          class="fixed bottom-0 left-0 flex w-screen justify-end bg-white px-10 py-5 lg:relative lg:bottom-auto lg:left-auto lg:w-auto lg:p-0"
+        >
           <BaseButton />
         </div>
       </q-form>

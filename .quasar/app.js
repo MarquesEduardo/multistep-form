@@ -17,7 +17,7 @@ import { Quasar } from 'quasar'
 import { markRaw } from 'vue'
 import RootComponent from 'app/src/App.vue'
 
-
+import createStore from 'app/src/stores/index'
 import createRouter from 'app/src/router/index'
 
 
@@ -30,21 +30,34 @@ export default async function (createAppFn, quasarUserOptions) {
   const app = createAppFn(RootComponent)
 
   
-  app.config.performance = true
-  
 
   app.use(Quasar, quasarUserOptions)
 
   
 
   
+    const store = typeof createStore === 'function'
+      ? await createStore({})
+      : createStore
+
+    
+      app.use(store)
+
+      
+    
+  
 
   const router = markRaw(
     typeof createRouter === 'function'
-      ? await createRouter({})
+      ? await createRouter({store})
       : createRouter
   )
 
+  
+    // make router instance available in store
+    
+      store.use(({ store }) => { store.router = router })
+    
   
 
   // Expose the app, the router and the store.
@@ -52,7 +65,7 @@ export default async function (createAppFn, quasarUserOptions) {
   // different depending on whether we are in a browser or on the server.
   return {
     app,
-    
+    store,
     router
   }
 }

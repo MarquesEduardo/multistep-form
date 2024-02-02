@@ -8,4 +8,9 @@ enum COLORS {
   RED = 'red',
 }
 
-export { COLORS };
+enum PLANS {
+  MONTHLY = 'monthly',
+  YEARLY = 'yearly',
+}
+
+export { COLORS, PLANS };

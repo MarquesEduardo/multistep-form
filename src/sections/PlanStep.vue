@@ -1,6 +1,8 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
+import { storeToRefs } from 'pinia';
 import { baseButtonProps, BaseButton } from '@BaseUi';
+import { useOnboardingStore } from '../stores/onboarding';
 import { PlanCard } from './components';
 import { PLANS, type Plan } from './components/types';
 
@@ -9,10 +11,9 @@ const emit = defineEmits<{
   onNextStep: [];
 }>();
 
+const { selectedPlan, planType } = storeToRefs(useOnboardingStore());
 const isYearly = ref(false);
-const selectedPlan = ref(1);
 
-// NOTE :: ACTIVE_PLANS could be fetched from an API later on
 const ACTIVE_PLANS = ref<Plan[]>([
   {
     id: 1,
@@ -39,6 +40,10 @@ const ACTIVE_PLANS = ref<Plan[]>([
     discount: '2 months free',
   },
 ]);
+
+watch(isYearly, (type) =>
+  type ? (planType.value = PLANS.YEARLY) : (planType.value = PLANS.MONTHLY)
+);
 </script>
 
 <template>

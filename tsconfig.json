@@ -6,6 +6,7 @@
       "@/*": ["./src/*"],
       "@Assets/*": ["./src/assets/*"],
       "@BaseUi": ["./src/components/base"],
+      "@Stores/*": ["./src/stores/*"],
       "@Types": ["./src/types"],
     },
   },
