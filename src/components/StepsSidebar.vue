@@ -7,36 +7,48 @@ defineProps({
 <template>
   <div
     v-if="mobile"
-    class="absolute sm:hidden top-[49px] flex gap-4 items-start pt-10 justify-center z-10 bg-mobile rounded-none bg-bottom bg-cover w-full h-64"
+    class="absolute top-[49px] z-10 flex h-64 w-full items-start justify-center gap-4 rounded-none bg-mobile bg-cover bg-bottom pt-10 sm:hidden"
     id="steps-sidebar-mobile"
   >
-    <div class="flex gap-4 items-center" id="step-1">
+    <div
+      class="flex items-center gap-4"
+      id="step-1"
+    >
       <p
-        class="cursor-pointer text-white border border-solid text-lg rounded-full p-1 text-center w-9"
+        class="w-9 cursor-pointer rounded-full border border-solid p-1 text-center text-lg text-white"
       >
         1
       </p>
     </div>
 
-    <div class="flex gap-4 items-center" id="step-2">
+    <div
+      class="flex items-center gap-4"
+      id="step-2"
+    >
       <p
-        class="cursor-pointer text-white border border-solid text-lg rounded-full p-1 text-center w-9"
+        class="w-9 cursor-pointer rounded-full border border-solid p-1 text-center text-lg text-white"
       >
         2
       </p>
     </div>
 
-    <div class="flex gap-4 items-center" id="step-3">
+    <div
+      class="flex items-center gap-4"
+      id="step-3"
+    >
       <p
-        class="cursor-pointer text-white border border-solid text-lg rounded-full p-1 text-center w-9"
+        class="w-9 cursor-pointer rounded-full border border-solid p-1 text-center text-lg text-white"
       >
         3
       </p>
     </div>
 
-    <div class="flex gap-4 items-center" id="step-4">
+    <div
+      class="flex items-center gap-4"
+      id="step-4"
+    >
       <p
-        class="cursor-pointer text-white border border-solid text-lg rounded-full p-1 text-center w-9"
+        class="w-9 cursor-pointer rounded-full border border-solid p-1 text-center text-lg text-white"
       >
         4
       </p>
@@ -45,74 +57,64 @@ defineProps({
 
   <div
     v-else
-    class="sm:!flex flex-col gap-6 hidden px-6 py-8 bg-desktop rounded-lg bg-cover w-[205px] h-full"
+    class="hidden h-full w-[205px] flex-col gap-6 rounded-lg bg-desktop bg-cover px-6 py-8 sm:!flex"
     id="steps-sidebar-desktop"
   >
-    <div class="flex gap-4 items-center" id="step-1">
+    <div
+      class="flex items-center gap-4"
+      id="step-1"
+    >
       <p
-        class="is-active cursor-default text-white border border-solid rounded-full p-1 text-center w-8"
+        class="is-active w-8 cursor-default rounded-full border border-solid p-1 text-center text-white"
       >
         1
       </p>
 
       <div class="uppercase">
-        <p class="font-ubuntu cursor-default text-xs text-gray-text mb-0.5">
-          Step 1
-        </p>
-        <p class="font-ubuntu cursor-default text-xs font-bold text-white">
-          Your info
-        </p>
+        <p class="text-gray mb-0.5 cursor-default font-ubuntu text-xs">Step 1</p>
+        <p class="cursor-default font-ubuntu text-xs font-bold text-white">Your info</p>
       </div>
     </div>
 
-    <div class="flex gap-4 items-center" id="step-2">
-      <p
-        class="cursor-default text-white border border-solid rounded-full p-1 text-center w-8"
-      >
+    <div
+      class="flex items-center gap-4"
+      id="step-2"
+    >
+      <p class="w-8 cursor-default rounded-full border border-solid p-1 text-center text-white">
         2
       </p>
 
       <div class="uppercase">
-        <p class="font-ubuntu cursor-default text-xs text-gray-text mb-0.5">
-          Step 2
-        </p>
-        <p class="font-ubuntu cursor-default text-xs font-bold text-white">
-          select plan
-        </p>
+        <p class="text-gray mb-0.5 cursor-default font-ubuntu text-xs">Step 2</p>
+        <p class="cursor-default font-ubuntu text-xs font-bold text-white">select plan</p>
       </div>
     </div>
 
-    <div class="flex gap-4 items-center" id="step-3">
-      <p
-        class="cursor-default text-white border border-solid rounded-full p-1 text-center w-8"
-      >
+    <div
+      class="flex items-center gap-4"
+      id="step-3"
+    >
+      <p class="w-8 cursor-default rounded-full border border-solid p-1 text-center text-white">
         3
       </p>
 
       <div class="uppercase">
-        <p class="font-ubuntu cursor-default text-xs text-gray-text mb-0.5">
-          Step 3
-        </p>
-        <p class="font-ubuntu cursor-default text-xs font-bold text-white">
-          add-ons
-        </p>
+        <p class="text-gray mb-0.5 cursor-default font-ubuntu text-xs">Step 3</p>
+        <p class="cursor-default font-ubuntu text-xs font-bold text-white">add-ons</p>
       </div>
     </div>
 
-    <div class="flex gap-4 items-center" id="step-4">
-      <p
-        class="cursor-default text-white border border-solid rounded-full p-1 text-center w-8"
-      >
+    <div
+      class="flex items-center gap-4"
+      id="step-4"
+    >
+      <p class="w-8 cursor-default rounded-full border border-solid p-1 text-center text-white">
         4
       </p>
 
       <div class="uppercase">
-        <p class="font-ubuntu cursor-default text-xs text-gray-text mb-0.5">
-          Step 4
-        </p>
-        <p class="font-ubuntu cursor-default text-xs font-bold text-white">
-          summary
-        </p>
+        <p class="text-gray mb-0.5 cursor-default font-ubuntu text-xs">Step 4</p>
+        <p class="cursor-default font-ubuntu text-xs font-bold text-white">summary</p>
       </div>
     </div>
   </div>
@@ -120,6 +122,6 @@ defineProps({
 
 <style scoped>
 .is-active {
-  @apply bg-green-light !text-black font-medium;
+  @apply bg-green font-medium !text-black;
 }
 </style>

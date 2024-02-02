@@ -1,18 +1,19 @@
 <script setup lang="ts">
 import StepsSidebar from '../components/StepsSidebar.vue';
-import { StepOne, StepTwo, StepThree, StepFour } from '../sections';
+import { StepOne, StepTwo, StepThree, StepFour, PersonalInfoStep } from '../sections';
 </script>
 
 <template>
-  <div class="w-full h-full p-5 flex items-center justify-center">
+  <div class="flex h-full w-full items-center justify-center p-5">
     <StepsSidebar mobile />
 
     <div
-      class="flex flex-nowrap p-3 items-center z-20 mt-10 sm:mt-0 justify-between bg-white rounded-lg shadow-lg shadow-slate-200 w-[740px] h-[450px]"
+      class="z-20 mt-10 flex h-[450px] w-[740px] flex-nowrap items-center justify-between rounded-lg bg-white p-3 shadow-lg shadow-slate-200 sm:mt-0"
       id="form-card"
     >
       <StepsSidebar />
-      <StepOne />
+      <!-- <StepOne /> -->
+      <PersonalInfoStep />
     </div>
   </div>
 </template>
