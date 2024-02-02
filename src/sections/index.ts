@@ -1,5 +1,5 @@
-export { default as StepOne } from './StepOne.vue';
-export { default as StepTwo } from './StepTwo.vue';
-export { default as StepThree } from './StepThree.vue';
-export { default as StepFour } from './StepFour.vue';
-export { default as PersonalInfoStep } from './PersonalInfoStep.vue';
+export { default as InfoStep } from './InfoStep.vue';
+export { default as PlanStep } from './PlanStep.vue';
+export { default as AddonsStep } from './AddonsStep.vue';
+export { default as FinishingStep } from './FinishingStep.vue';
+export { default as ThankYou } from './ThankYou.vue';

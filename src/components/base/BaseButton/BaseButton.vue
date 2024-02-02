@@ -9,7 +9,7 @@ withDefaults(
     label?: string;
     loading?: boolean;
     type?: ROLES;
-    variation: VARIATIONS;
+    variation?: VARIATIONS;
   }>(),
   {
     color: 'default',
@@ -33,7 +33,7 @@ withDefaults(
 
 <style scoped>
 .base-button {
-  @apply rounded-md text-xs capitalize text-white transition-colors before:shadow-none;
+  @apply rounded-md py-2 text-xs capitalize text-white transition-colors before:shadow-none;
 }
 
 .base-button.primary {
@@ -45,6 +45,6 @@ withDefaults(
 }
 
 .base-button.subtle {
-  @apply bg-white !text-gray hover:text-gray;
+  @apply bg-white !text-gray hover:!bg-white hover:!text-blue-dark;
 }
 </style>

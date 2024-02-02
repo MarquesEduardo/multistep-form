@@ -1,127 +1,88 @@
 <script setup lang="ts">
-defineProps({
-  mobile: Boolean,
-});
+defineProps<{
+  step: number;
+  mobile?: boolean;
+}>();
+
+interface Step {
+  id: number;
+  title: string;
+}
+
+const STEPS: Step[] = [
+  {
+    id: 1,
+    title: 'Your Info',
+  },
+  {
+    id: 2,
+    title: 'Select Plan',
+  },
+  {
+    id: 3,
+    title: 'Add-Ons',
+  },
+  {
+    id: 4,
+    title: 'Summary',
+  },
+];
 </script>
 
 <template>
-  <div
-    v-if="mobile"
-    class="absolute top-[49px] z-10 flex h-64 w-full items-start justify-center gap-4 rounded-none bg-mobile bg-cover bg-bottom pt-10 sm:hidden"
-    id="steps-sidebar-mobile"
-  >
+  <Transition mode="out-in">
     <div
-      class="flex items-center gap-4"
-      id="step-1"
+      v-if="mobile"
+      class="absolute top-[49px] z-10 flex h-64 w-full items-start justify-center gap-4 rounded-none bg-mobile bg-cover bg-bottom pt-10 lg:hidden"
     >
-      <p
-        class="w-9 cursor-pointer rounded-full border border-solid p-1 text-center text-lg text-white"
+      <div
+        v-for="{ id } in STEPS"
+        :key="id"
+        class="flex items-center gap-4"
       >
-        1
-      </p>
-    </div>
-
-    <div
-      class="flex items-center gap-4"
-      id="step-2"
-    >
-      <p
-        class="w-9 cursor-pointer rounded-full border border-solid p-1 text-center text-lg text-white"
-      >
-        2
-      </p>
-    </div>
-
-    <div
-      class="flex items-center gap-4"
-      id="step-3"
-    >
-      <p
-        class="w-9 cursor-pointer rounded-full border border-solid p-1 text-center text-lg text-white"
-      >
-        3
-      </p>
-    </div>
-
-    <div
-      class="flex items-center gap-4"
-      id="step-4"
-    >
-      <p
-        class="w-9 cursor-pointer rounded-full border border-solid p-1 text-center text-lg text-white"
-      >
-        4
-      </p>
-    </div>
-  </div>
-
-  <div
-    v-else
-    class="hidden h-full w-[205px] flex-col gap-6 rounded-lg bg-desktop bg-cover px-6 py-8 sm:!flex"
-    id="steps-sidebar-desktop"
-  >
-    <div
-      class="flex items-center gap-4"
-      id="step-1"
-    >
-      <p
-        class="is-active w-8 cursor-default rounded-full border border-solid p-1 text-center text-white"
-      >
-        1
-      </p>
-
-      <div class="uppercase">
-        <p class="text-gray mb-0.5 cursor-default font-ubuntu text-xs">Step 1</p>
-        <p class="cursor-default font-ubuntu text-xs font-bold text-white">Your info</p>
+        <p
+          :class="[
+            'w-9 cursor-pointer rounded-full border border-solid p-1 text-center text-lg text-white',
+            { 'is-active': id === step },
+          ]"
+        >
+          {{ id }}
+        </p>
       </div>
     </div>
 
     <div
-      class="flex items-center gap-4"
-      id="step-2"
+      v-else
+      class="hidden h-full w-[205px] flex-col gap-6 rounded-lg bg-desktop bg-cover px-6 py-8 lg:!flex"
+      id="steps-sidebar-desktop"
     >
-      <p class="w-8 cursor-default rounded-full border border-solid p-1 text-center text-white">
-        2
-      </p>
+      <div
+        v-for="{ id, title } in STEPS"
+        :key="`${id}-${title}`"
+        class="flex items-center gap-4"
+      >
+        <p
+          :class="[
+            'w-8 cursor-default rounded-full border border-solid p-1 text-center text-white',
+            { 'is-active': id === step },
+          ]"
+        >
+          {{ id }}
+        </p>
 
-      <div class="uppercase">
-        <p class="text-gray mb-0.5 cursor-default font-ubuntu text-xs">Step 2</p>
-        <p class="cursor-default font-ubuntu text-xs font-bold text-white">select plan</p>
+        <div class="uppercase">
+          <p class="text-gray-lighter mb-0.5 cursor-default font-ubuntu text-xs opacity-90">
+            Step {{ id }}
+          </p>
+          <p class="cursor-default font-ubuntu text-xs font-bold text-white">{{ title }}</p>
+        </div>
       </div>
     </div>
-
-    <div
-      class="flex items-center gap-4"
-      id="step-3"
-    >
-      <p class="w-8 cursor-default rounded-full border border-solid p-1 text-center text-white">
-        3
-      </p>
-
-      <div class="uppercase">
-        <p class="text-gray mb-0.5 cursor-default font-ubuntu text-xs">Step 3</p>
-        <p class="cursor-default font-ubuntu text-xs font-bold text-white">add-ons</p>
-      </div>
-    </div>
-
-    <div
-      class="flex items-center gap-4"
-      id="step-4"
-    >
-      <p class="w-8 cursor-default rounded-full border border-solid p-1 text-center text-white">
-        4
-      </p>
-
-      <div class="uppercase">
-        <p class="text-gray mb-0.5 cursor-default font-ubuntu text-xs">Step 4</p>
-        <p class="cursor-default font-ubuntu text-xs font-bold text-white">summary</p>
-      </div>
-    </div>
-  </div>
+  </Transition>
 </template>
 
 <style scoped>
 .is-active {
-  @apply bg-green font-medium !text-black;
+  @apply border-white bg-green font-medium !text-black;
 }
 </style>
