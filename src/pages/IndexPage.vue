@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { storeToRefs } from 'pinia';
+import { useOnboardingStore } from '../stores/onboarding';
 import StepsSidebar from '../components/StepsSidebar.vue';
 import { InfoStep, PlanStep, AddonsStep, FinishingStep, ThankYou } from '../sections';
 
-const step = ref(1);
+const { step } = storeToRefs(useOnboardingStore());
 
 function nextStep(id: number) {
   step.value = id;
@@ -11,15 +12,14 @@ function nextStep(id: number) {
 </script>
 
 <template>
-  <div class="flex h-full w-full items-center justify-center p-5">
+  <div class="flex h-auto w-full items-center justify-center p-5 lg:h-full">
     <StepsSidebar
       mobile
       :step="step"
     />
 
     <div
-      class="z-20 mt-24 flex h-max w-[740px] flex-nowrap items-center justify-between rounded-lg bg-white p-3 shadow-lg shadow-slate-200 sm:mt-0 lg:h-[450px]"
-      id="form-card"
+      class="z-20 mb-32 mt-24 flex h-max w-[740px] flex-nowrap items-center justify-between rounded-lg bg-white p-3 shadow-lg shadow-slate-200 sm:mt-0 lg:mb-0 lg:h-[450px]"
     >
       <StepsSidebar :step="step" />
 

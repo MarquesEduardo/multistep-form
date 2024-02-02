@@ -1,23 +1,16 @@
 <script setup lang="ts">
 import { baseButtonProps, BaseButton } from '@BaseUi';
 import { SummaryCard } from './components';
-import { PLANS } from './components/types';
 
 const emit = defineEmits<{
   onBackToPlanSelection: [];
   onPreviousStep: [];
   onNextStep: [];
 }>();
-
-const DETAILS = {
-  name: 'Arcade',
-  price: 9,
-  type: PLANS.MONTHLY,
-};
 </script>
 
 <template>
-  <section class="flex h-full flex-col px-14 py-8 sm:w-[70%]">
+  <section class="flex h-full flex-col px-4 py-6 sm:w-[70%] lg:px-14 lg:py-8">
     <main class="content">
       <div class="mb-6 flex flex-col items-start justify-start gap-1">
         <h2 class="text-2xl font-bold text-blue-dark">Finishing up</h2>
@@ -25,14 +18,13 @@ const DETAILS = {
         <p class="text-gray">Double-check everything looks OK before confirming.</p>
       </div>
 
-      <SummaryCard
-        v-bind="DETAILS"
-        @click="emit('onBackToPlanSelection')"
-      />
+      <SummaryCard @click="emit('onBackToPlanSelection')" />
     </main>
 
-    <footer class="shrink text-blue-dark">
-      <q-form class="q-gutter-md flex flex-col gap-2">
+    <footer
+      class="fixed bottom-0 left-0 flex w-screen shrink justify-between bg-white px-10 py-5 text-blue-dark lg:relative lg:bottom-auto lg:left-auto lg:w-full lg:p-0"
+    >
+      <q-form class="q-gutter-md flex w-full flex-col gap-2">
         <div class="flex justify-between">
           <BaseButton
             label="Go Back"
@@ -40,7 +32,11 @@ const DETAILS = {
             @click="emit('onPreviousStep')"
           />
 
-          <BaseButton @click="emit('onNextStep')" />
+          <BaseButton
+            label="Confirm"
+            :variation="baseButtonProps.variation.ACTION"
+            @click="emit('onNextStep')"
+          />
         </div>
       </q-form>
     </footer>

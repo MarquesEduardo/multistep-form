@@ -6,8 +6,10 @@
       "@/*": ["./src/*"],
       "@Assets/*": ["./src/assets/*"],
       "@BaseUi": ["./src/components/base"],
+      "@Constants": ["./src/constants"],
       "@Stores/*": ["./src/stores/*"],
       "@Types": ["./src/types"],
     },
+    "types": ["pinia-plugin-persist"],
   },
 }

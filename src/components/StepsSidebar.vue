@@ -26,6 +26,10 @@ const STEPS: Step[] = [
     id: 4,
     title: 'Summary',
   },
+  {
+    id: 5,
+    title: 'Next Steps',
+  },
 ];
 </script>
 
