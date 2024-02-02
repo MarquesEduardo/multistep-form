@@ -61,7 +61,7 @@ const { name, email, phone } = storeToRefs(useOnboardingStore());
         </fieldset>
 
         <div
-          class="fixed bottom-0 left-0 flex w-screen justify-end bg-white px-10 py-5 lg:relative lg:bottom-auto lg:left-auto lg:w-auto lg:p-0"
+          class="fixed bottom-0 left-0 ml-0 flex w-screen justify-end bg-white px-10 py-5 lg:relative lg:bottom-auto lg:left-auto lg:w-auto lg:p-0"
         >
           <BaseButton />
         </div>

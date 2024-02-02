@@ -2,44 +2,18 @@
 import { ref, watch } from 'vue';
 import { storeToRefs } from 'pinia';
 import { baseButtonProps, BaseButton } from '@BaseUi';
+import { ACTIVE_PLANS } from '@Constants';
+import { PLANS } from '@Types';
 import { useOnboardingStore } from '../stores/onboarding';
 import { PlanCard } from './components';
-import { PLANS, type Plan } from './components/types';
 
 const emit = defineEmits<{
   onPreviousStep: [];
   onNextStep: [];
 }>();
 
-const { selectedPlan, planType } = storeToRefs(useOnboardingStore());
-const isYearly = ref(false);
-
-const ACTIVE_PLANS = ref<Plan[]>([
-  {
-    id: 1,
-    name: 'Arcade',
-    icon: 'icon-arcade.svg',
-    price: '$90/yr',
-    type: PLANS.MONTHLY,
-    discount: '2 months free',
-  },
-  {
-    id: 2,
-    name: 'Advanced',
-    icon: 'icon-advanced.svg',
-    price: '$120/yr',
-    type: PLANS.MONTHLY,
-    discount: '2 months free',
-  },
-  {
-    id: 3,
-    name: 'Pro',
-    icon: 'icon-pro.svg',
-    price: '$150/yr',
-    type: PLANS.MONTHLY,
-    discount: '2 months free',
-  },
-]);
+const { selectedPlanId, planType } = storeToRefs(useOnboardingStore());
+const isYearly = ref(planType.value === PLANS.YEARLY);
 
 watch(isYearly, (type) =>
   type ? (planType.value = PLANS.YEARLY) : (planType.value = PLANS.MONTHLY)
@@ -47,7 +21,7 @@ watch(isYearly, (type) =>
 </script>
 
 <template>
-  <section class="flex h-full flex-col px-14 py-8 sm:w-[70%]">
+  <section class="flex h-full flex-col px-4 py-6 sm:w-[70%] lg:px-14 lg:py-8">
     <main class="content">
       <div class="mb-6 flex flex-col items-start justify-start gap-1">
         <h2 class="text-2xl font-bold text-blue-dark">Select your plan</h2>
@@ -59,10 +33,11 @@ watch(isYearly, (type) =>
         <PlanCard
           v-for="plan in ACTIVE_PLANS"
           v-bind="plan"
-          :class="[plan.id === selectedPlan ? 'bg-purple-light border-purple-dark' : '']"
+          :class="[plan.id === selectedPlanId ? 'bg-purple-light border-purple-dark' : '']"
           :key="plan.id"
           :showDiscounts="isYearly"
-          @click="selectedPlan = plan.id"
+          :planType="planType"
+          @click="selectedPlanId = plan.id"
         />
       </div>
 
@@ -82,8 +57,10 @@ watch(isYearly, (type) =>
       </div>
     </main>
 
-    <footer class="shrink text-blue-dark">
-      <q-form class="q-gutter-md flex flex-col gap-2">
+    <footer
+      class="fixed bottom-0 left-0 flex w-screen shrink justify-between bg-white px-10 py-5 text-blue-dark lg:relative lg:bottom-auto lg:left-auto lg:w-full lg:p-0"
+    >
+      <q-form class="q-gutter-md flex w-full flex-col gap-2">
         <div class="flex justify-between">
           <BaseButton
             label="Go Back"
@@ -91,7 +68,10 @@ watch(isYearly, (type) =>
             @click="emit('onPreviousStep')"
           />
 
-          <BaseButton @click="emit('onNextStep')" />
+          <BaseButton
+            :disable="!selectedPlanId"
+            @click="emit('onNextStep')"
+          />
         </div>
       </q-form>
     </footer>
