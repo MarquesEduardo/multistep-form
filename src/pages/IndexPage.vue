@@ -19,7 +19,7 @@ function nextStep(id: number) {
     />
 
     <div
-      class="z-20 mb-32 mt-24 flex h-max w-[740px] flex-nowrap items-center justify-between rounded-lg bg-white p-3 shadow-lg shadow-slate-200 sm:mt-0 lg:mb-0 lg:h-[450px]"
+      class="z-20 mb-32 mt-24 flex h-max w-[740px] flex-nowrap items-center justify-center rounded-lg bg-white p-3 shadow-lg shadow-slate-200 sm:mt-0 lg:mb-0 lg:h-[450px] lg:justify-between"
     >
       <StepsSidebar :step="step" />
 
