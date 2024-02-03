@@ -6,7 +6,7 @@
 
 This is a project created with the purpose of showcasing my abilities in front end web development. It renders a multi step form for a fictional gaming company, with steps to conclude a plan selection. It cycles throught 5 steps, from providing personal info, selecting the recurrence, adding extras and a checkout and thank you section.
 
-## The stack
+## ⚙️ The stack
 
 This form is fully validated with user-friendly interface - disabled buttons, error messages, memory-persistent informations from step to step and page reloading.
 
@@ -22,7 +22,7 @@ Here it was used the following stack:
 - Prettier Tailwind (0.5.11);
 - ESLint (8.11.0);
 
-## The code - in details
+## 💻️ The code - in details
 
 There's three videos that explains the project as a whole, the code, architectures, good practices, extras and more. It is highly recommended the watching of these videos, although they are in pt-BR.
 
@@ -30,7 +30,7 @@ There's three videos that explains the project as a whole, the code, architectur
 - [Projeto Multi Step Form - o Código](https://www.loom.com/share/0984c25f54454244ae3da6e59021609a?sid=9173a98c-dc9f-4cc4-83e2-cf53716f35b1)
 - [Projeto Multi Step Form - Encapsulamento de componente do Quasar](https://www.loom.com/share/db59b40a92a644af93138b4a9e00083d?sid=b6d6edc4-cb34-45fb-8841-2668fe78c2e17)
 
-## Where to find everything
+## 🔗 Where to find everything
 
 - [GitHub](https://github.com/MarquesEduardo/multistep-form)
 - [Project in production](https://multistep-form-liart.vercel.app/?#/)
